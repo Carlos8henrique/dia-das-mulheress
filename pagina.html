@@ -1,0 +1,313 @@
+<!DOCTYPE html> 
+<html lang="pt-BR">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&display=swap" rel="stylesheet">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te amo ❤️</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #000000;
+            margin: 0;
+            overflow: hidden;
+            padding-bottom: 100px;
+        }
+
+        .container {
+            max-width: 90%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .heart {
+            position: absolute;
+            top: -50px;
+            font-size: 30px;
+            color: pink;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -50px;
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                top: 100vh;
+                opacity: 0;
+                transform: scale(0.5);
+            }
+        }
+
+        .audio-player-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #181818;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .audio-player-container img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-right: 15px;
+        }
+
+        .audio-details {
+            flex: 1;
+            color: white;
+            text-align: left;
+        }
+
+        .audio-details h2 {
+            font-size: 18px;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .audio-details p {
+            font-size: 14px;
+            color: #b3b3b3;
+            margin: 5px 0;
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .controls button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        .controls button:hover {
+            color: #1db954;
+        }
+
+        .slideshow-container {
+            position: absolute;
+            top: 13%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 500px;
+            overflow: hidden;
+            background-color: #181818;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .mySlides {
+            display: none;
+        }
+
+        .slideshow-container img {
+            width: 430px;
+            height: 550px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.3s;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .text-box {
+            position: fixed;
+            bottom: 0;
+            width: 80%;
+            max-width: 500px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #181818;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.2);
+            font-family: 'Delius Swash Caps', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            .slideshow-container {
+                width: 90%;
+                max-width: 300px;
+            }
+
+            .audio-description {
+                font-size: 16px;
+            }
+
+            .text-box {
+                width: 90%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+
+    <div class="audio-player-container">
+        <img src="imagens/capa musica.jpg" alt="Capa da Música">
+        <div class="audio-details">
+            <h2>Aliança - Tribalistas</h2>
+            <p>Tribalistas</p>
+        </div>
+        <div class="controls">
+            <button id="prev-btn">&#10094;</button>
+            <button id="play-pause-btn">&#9658;</button>
+            <button id="next-btn">&#10095;</button>
+        </div>
+    </div>
+
+    <audio id="audio-player" autoplay loop>
+        <source src="Aliança - Tribalistas (lyric video)(MP3_128K).mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <img src="imagens/1.jpeg" alt="Foto 1">
+        </div>
+        <div class="mySlides fade">
+            <img src="imagens/2.jpeg" alt="Foto 2">
+        </div>
+        <div class="mySlides fade">
+            <img src="imagens/3.jpeg" alt="Foto 3">
+        </div>
+        <div class="mySlides fade">
+            <img src="imagens/4.jpeg" alt="Foto 4">
+        </div>
+        <div class="mySlides fade">
+            <img src="imagens/5.jpeg" alt="Foto 5">
+        </div>
+        <div class="mySlides fade">
+            <img src="imagens/6.jpeg" alt="Foto 6">
+        </div>
+        <div class="mySlides fade">
+            <img src="imagens/7.jpeg" alt="Foto 7">
+        </div>
+        <div class="mySlides fade">
+            <img src="imagens/8.jpeg" alt="Foto 8">
+        </div>
+        <div class="mySlides fade">
+            <img src="imagens/9.jpeg" alt="Foto 9">
+        </div>
+        <div class="mySlides fade">
+            <img src="imagens/10.jpeg" alt="Foto 10">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <div class="text-box">
+        <h1>FELIZ DIA DAS MULHERES</h1>
+        <p>Sei que quando falamos de "dia das mulheres" nos referimos a todas, mas eu fiz esse pequeno lembrete para você, para que você se lembre o quão importante você é para mim, em poucas semanas você alterou boa parte da minha forma de pensar e agir, muito obrigado por estar na minha vida... ti amo❤️❤️❤️❤️</p>    
+    </div>
+
+    <script>
+        let slideIndex = 0;
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("mySlides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 3000);
+        }
+
+        function plusSlides(n) {
+            let slides = document.getElementsByClassName("mySlides");
+            slideIndex += n;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            if (slideIndex < 1) {
+                slideIndex = slides.length;
+            }
+            showSlides();
+        }
+
+        showSlides();
+
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        const audioPlayer = document.getElementById('audio-player');
+        let isPlaying = true;
+
+        playPauseBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                audioPlayer.pause();
+                playPauseBtn.innerHTML = "&#9658;";
+            } else {
+                audioPlayer.play();
+                playPauseBtn.innerHTML = "&#10074;&#10074;";
+            }
+            isPlaying = !isPlaying;
+        });
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = `${Math.random() * 100}vw`;
+            heart.style.fontSize = `${Math.random() * 30 + 20}px`;
+            heart.style.animationDuration = `${Math.random() * 5 + 3}s`;
+            document.body.appendChild(heart);
+
+            heart.addEventListener('animationend', () => {
+                heart.remove();
+            });
+        }
+
+        setInterval(createHeart, 1000);
+    </script>
+</body>
+</html>
